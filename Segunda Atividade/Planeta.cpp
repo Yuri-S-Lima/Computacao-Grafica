@@ -26,18 +26,20 @@ void display(void)
    }
    glPopMatrix(); // Desempilando a Matriz
 
-   glutSwapBuffers();
+   glutSwapBuffers(); 
 }
 
 void reshape (int w, int h)
 {
-   glMatrixMode(GL_PROJECTION);
-   glLoadIdentity();
+   glMatrixMode(GL_PROJECTION); // Especificando que as operações serão feitas na matrix projection
+   glLoadIdentity(); // Carregando a matrix identidade
+
+   // Mexendo com a perspectiva
    gluPerspective(60.0, w/(h*1.0), 1.0, 20.0);
    gluLookAt(0.0, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0);
 
-   glMatrixMode(GL_MODELVIEW);
-   glLoadIdentity();
+   glMatrixMode(GL_MODELVIEW); // Especificando que as operações serão feitas na matrix modelview
+   glLoadIdentity(); // Carregando a matrix identidade
 }
 
 void keyboard (unsigned char key, int x, int y)
@@ -45,19 +47,19 @@ void keyboard (unsigned char key, int x, int y)
    switch (key) {
       case 'a':
         dia = (dia + 10) % 360;
-        glutPostRedisplay();
+        glutPostRedisplay(); // Informa que a janela atual deve ser redesenhada
         break;
       case 'd':
         dia = (dia - 10) % 360;
-        glutPostRedisplay();
+        glutPostRedisplay(); // Informa que a janela atual deve ser redesenhada 
         break;
       case 's':
         ano = (ano + 5) % 360;
-        glutPostRedisplay();
+        glutPostRedisplay(); // Informa que a janela atual deve ser redesenhada
         break;
       case 'w':
         ano = (ano - 5) % 360;
-        glutPostRedisplay();
+        glutPostRedisplay(); // Informa que a janela atual deve ser redesenhada
         break;
 
       case 27:
@@ -71,14 +73,14 @@ void keyboard (unsigned char key, int x, int y)
 
 int main(int argc, char** argv)
 {
-   glutInit(&argc, argv);
-   glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB);
-   glutInitWindowSize(500, 500);
-   glutCreateWindow(argv[0]);
-   glutDisplayFunc(display);
-   glutReshapeFunc(reshape);
-   glutKeyboardFunc(keyboard);
+   glutInit(&argc, argv); // Inicializando a OpenGl
+   glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB); // Configurando os modos de exibição
+   glutInitWindowSize(500, 500); // Definindo o tamanho da janela em pixels
+   glutCreateWindow(argv[0]); // Definindo o nome da janela
+   glutDisplayFunc(display); // Especificando a função de rendering (exibe a cena no loop)
+   glutReshapeFunc(reshape); // Especificando a função a ser executada quando a janela é redimensionada
+   glutKeyboardFunc(keyboard); // Escificando a função que deve ser executada quando a tela for pressionada
    glClearColor(1,1,1,1);
-   glutMainLoop();
+   glutMainLoop();  // Executando o loop de renderização
    return 0;
 }
