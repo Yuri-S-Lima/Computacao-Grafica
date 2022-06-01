@@ -14,18 +14,18 @@ void display(void){
 
     glPushMatrix();{ // empilhando nova matriz para desenhar
       glColor3f(0.5,0.0,0.0);
-      glScalef(2.0, 0.4, 1.0);
+      glScalef(2.0, 0.4, 1.0); // escala
       glutWireCube(1.0);
     }
     glPopMatrix(); // desempilhando a matriz de desenho
 
-    glTranslatef(2.0, 0.0, 0.0); // translação para desenhar mais à fernte
+    glTranslatef(2.0, 0.0, 0.0); // translação para desenhar mais à frente
     glPushMatrix();{ // empilhando nova matriz
         glTranslatef(-1, 0, 0); // voltando os pontos antes da rotação
         glRotatef(cotovelo, 0, 0, 1); // rotação
         glTranslatef(1, 0, 0); // voltando os pontos para desenhar 
         glColor3f(0.0,0.0,0.5);
-        glScalef(2.0, 0.4, 1.0);
+        glScalef(2.0, 0.4, 1.0); // escala
         glutWireCube(1.0);
     }
     glPopMatrix(); // desempilhando a matriz
